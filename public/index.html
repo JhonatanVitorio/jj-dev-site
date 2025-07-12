@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JJ Dev Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <link rel="stylesheet" href="../src/css/style.css">
+</head>
+
+<body>
+    <header id="main-header">
+
+        <nav class="nav-menu nav-menu-left">
+            <a href="/public/index.html">Início</a>
+            <a href="/public/views/services.html">Serviços</a>
+        </nav>
+
+        <div class="logo">
+            <a href="#hero"><img src="/public/img/logotipo.png" alt="JJ Dev Solutions" /></a>
+        </div>
+
+        <nav class="nav-menu nav-menu-right">
+            <a href="/public/views/portfolio.html">Portfólio</a>
+            <a href="/public/views/contact.html">Contato</a>
+        </nav>
+
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="open-menu"><i class="fas fa-bars"></i></label>
+
+            <ul class="nav-bar menu">
+                <li><a href="/public/index.html"><i class="ph ph-house"></i> Início</a></li>
+                <li><a href="/public/views/services.html"><i class="ph ph-gear-six"></i> Serviços</a></li>
+                <li><a href="/public/views/portfolio.html"><i class="ph ph-briefcase"></i> Portfólio</a></li>
+                <li><a href="/public/views/contact.html"><i class="ph ph-chat-text"></i> Contato</a></li>
+                <label for="check" class="close-menu"><i class="ph ph-x-circle"></i></label>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-overlay">
+            <div class="glow-background"></div>
+            <h1 class="fade-in">Soluções Digitais <br> com JJ Dev Solutions </h1>
+            <p class="fade-in">Sites modernos, APIs inteligentes, bots automatizados e muito mais.</p>
+            <a href="#services" class="fade-in" id="btn">Conheça os Nossos Serviços</a>
+        </div>
+
+        <div class="scroll-down"><a class="scroll-down-btn" href="#services">></a></div>
+
+        <a href="https://wa.me/5511952317638" target="_blank" class="btnContact">
+            <img src="/public/img/whatsImage.png" alt="WhatsApp">
+        </a>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Nossos Serviços</h2>
+        <div class="services-cards-container" data-aos="fade-up">
+            <div class="service-card">
+                <span class="service-icon"><i class="fas fa-sync-alt"></i></span>
+                <h3>Automação de Tarefas</h3>
+                <p>Elimine tarefas repetitivas com sistemas que executam processos automaticamente. Otimize 
+                    fluxos como envio de e-mails, geração de relatórios, controle de estoques e mais.</p>
+
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon"><i class="fas fa-desktop"></i></span>
+                <h3>Sites Responsivos</h3>
+                <p>Desenvolvemos sites modernos, rápidos e adaptáveis a todas os dispositivos. Ideal para apresentar seu
+                    negócio com design profissional e performance excelente em qualquer dispositivo.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon"><i class="fas fa-code-branch"></i></span>
+                <h3>APIs Sob Medida</h3>
+                <p>Criamos e integramos APIs com segurança, conectando sistemas e plataformas. Isso permite automações
+                    entre ferramentas e expansão digital escalável.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon"><i class="fas fa-robot"></i></span>
+                <h3>Bots de WhatsApp/Telegram</h3>
+                <p>Desenvolvemos bots inteligentes para atendimento, marketing, suporte e muito mais. Aumente a
+                    eficiência da comunicação no seu canal preferido com respostas automáticas e fluxos personalizados.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon"><i class="fas fa-chart-bar"></i></span>
+                <h3>Automação e Análise de Dados</h3>
+                <p>Capturamos, organizamos e visualizamos dados para facilitar decisões estratégicas. Entregamos
+                    dashboards personalizados, relatórios e integração com bancos de dados.</p>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <footer>
+        <p>&copy; 2025 JJ Dev Solutions - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="../src/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
