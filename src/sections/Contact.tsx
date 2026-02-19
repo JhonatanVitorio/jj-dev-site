@@ -159,6 +159,7 @@ export function Contact() {
 
             <Button
               type="submit"
+              style={{ cursor: 'pointer'}}
               disabled={disabled}
               className="h-11 rounded-2xl bg-cyan-400 text-slate-950 hover:bg-cyan-300 disabled:opacity-50"
             >
