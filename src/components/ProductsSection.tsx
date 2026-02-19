@@ -43,35 +43,46 @@ export function ProductsSection() {
     },
   ]
 
-  const total = products.length
-  const isOddMobile = total % 2 === 1
-
   return (
-    <section id="produtos" className="py-16 md:py-32 px-4 md:px-6 max-w-7xl mx-auto">
-      <div className="text-center mb-10 md:mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold mb-3 md:mb-4">
+    <section id="produtos" className="py-32 px-6 max-w-7xl mx-auto">
+      {/* Header */}
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold mb-4">
           Nossos <span className="text-cyan-400">Produtos</span>
         </h2>
-        <p className="text-white/60 max-w-2xl mx-auto text-sm md:text-base">
-          Projetos desenvolvidos com arquitetura moderna, UI premium e foco em resultado real.
+        <p className="text-white/60 max-w-2xl mx-auto text-base">
+          Projetos desenvolvidos com arquitetura moderna, UI premium e foco em
+          resultado real.
         </p>
       </div>
 
-      {/* MOBILE: 2 col | DESKTOP: 3 col */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 md:gap-12">
+      {/* Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-12 justify-items-center">
         {products.map((product, index) => {
-          const remainderDesktop = total % 3
-          const isLastRowTwoDesktop = remainderDesktop === 2 && index >= total - 2
+          const total = products.length
+          const remainder = total % 3
 
-          const isLastMobileSingle = isOddMobile && index === total - 1
+          // Desktop: mantém EXATAMENTE sua lógica original
+          const isLastRowTwo = remainder === 2 && index >= total - 2
+
+          // Mobile: último card maior (ocupa a linha toda)
+          const isLastMobile = index === total - 1
 
           return (
             <div
               key={index}
               className={[
-                "w-full",
-                isLastMobileSingle ? "col-span-2 mx-auto max-w-[420px]" : "",
-                isLastRowTwoDesktop ? "md:translate-x-1/2" : "",
+                // base igual ao seu (desktop preservado)
+                "w-full max-w-sm",
+
+                // ✅ SOMENTE MOBILE: último item vira “grande”
+                isLastMobile ? "col-span-2" : "",
+
+                // ✅ NO DESKTOP volta ao normal (não ocupa 2 colunas e não estica)
+                isLastMobile ? "md:col-span-1 md:max-w-sm" : "",
+
+                // Desktop: seu translate original
+                isLastRowTwo ? "md:translate-x-1/2" : "",
               ].join(" ")}
             >
               <ProductSwapCard
