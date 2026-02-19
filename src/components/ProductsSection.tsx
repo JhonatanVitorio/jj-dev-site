@@ -44,6 +44,7 @@ export function ProductsSection() {
   ]
 
   const total = products.length
+  const isOddMobile = total % 2 === 1
 
   return (
     <section id="produtos" className="py-16 md:py-32 px-4 md:px-6 max-w-7xl mx-auto">
@@ -56,21 +57,12 @@ export function ProductsSection() {
         </p>
       </div>
 
-      {/* Mobile: 2 col | Desktop: 3 col */}
+      {/* MOBILE: 2 col | DESKTOP: 3 col */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 md:gap-12">
         {products.map((product, index) => {
-          // Regra: se total % 3 == 2 (ex: 5 itens), os 2 últimos ficam na última linha.
-          // Em grid de 3 col, para centralizar esses 2:
-          // - o primeiro dos dois começa na coluna 1 (col-start-1)
-          // - o segundo começa na coluna 2 (col-start-2)
-          // Assim eles ocupam col 1 e 2 e ficam centralizados sem “buraco” visual.
-          const remainder = total % 3
-          const isLastRowTwo = remainder === 2 && index >= total - 2
-          const isFirstOfLastTwo = isLastRowTwo && index === total - 2
-          const isSecondOfLastTwo = isLastRowTwo && index === total - 1
+          const remainderDesktop = total % 3
+          const isLastRowTwoDesktop = remainderDesktop === 2 && index >= total - 2
 
-          // Mobile: quando ímpar (5 itens), último ocupa 2 colunas e centraliza.
-          const isOddMobile = total % 2 === 1
           const isLastMobileSingle = isOddMobile && index === total - 1
 
           return (
@@ -78,12 +70,8 @@ export function ProductsSection() {
               key={index}
               className={[
                 "w-full",
-                // Mobile centraliza último se sobrar 1
                 isLastMobileSingle ? "col-span-2 mx-auto max-w-[420px]" : "",
-
-                // Desktop (md): centralizar os 2 últimos sem translate
-                isFirstOfLastTwo ? "md:col-start-1" : "",
-                isSecondOfLastTwo ? "md:col-start-2" : "",
+                isLastRowTwoDesktop ? "md:translate-x-1/2" : "",
               ].join(" ")}
             >
               <ProductSwapCard
