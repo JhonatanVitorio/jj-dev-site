@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+@keyframes float {
+  0% { transform: translate3d(0,0,0) }
+  50% { transform: translate3d(24px, -12px, 0) }
+  100% { transform: translate3d(0,0,0) }
+}
+
+/* ===== Aurora CSS (mais forte e visível) ===== */
+.aurora-blob {
+  position: absolute;
+  width: 760px;
+  height: 760px;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.35;              /* mais forte */
+  mix-blend-mode: screen;     /* deixa “brilho” mais vivo */
+  will-change: transform;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.aurora-1 {
+  top: -260px;
+  left: -22%;
+  background: rgba(34, 211, 238, 1);
+  animation: auroraMove1 8s infinite;
+}
+
+.aurora-2 {
+  top: -80px;
+  right: -22%;
+  background: rgba(59, 130, 246, 1);
+  opacity: 0.28;
+  animation: auroraMove2 10s infinite;
+}
+
+.aurora-3 {
+  bottom: -360px;
+  left: 10%;
+  background: rgba(34, 211, 238, 1);
+  opacity: 0.22;
+  animation: auroraMove3 12s infinite;
+}
+
+/* movimento MUITO mais perceptível */
+@keyframes auroraMove1 {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(120px, 40px, 0) scale(1.12); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes auroraMove2 {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(-140px, 70px, 0) scale(1.10); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes auroraMove3 {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(110px, -50px, 0) scale(1.08); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+/* “respiração” do fundo (bem pro) */
+.aurora-shift {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(34,211,238,0.16), transparent 55%),
+              radial-gradient(circle at 80% 20%, rgba(59,130,246,0.12), transparent 60%),
+              radial-gradient(circle at 60% 80%, rgba(34,211,238,0.10), transparent 60%);
+  animation: auroraShift 9s ease-in-out infinite;
+  opacity: 0.9;
+  will-change: transform;
+}
+
+@keyframes auroraShift {
+  0%   { transform: translate3d(0, 0, 0); }
+  50%  { transform: translate3d(-30px, 18px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+
+/* ===== Star Border (animação real) ===== */
+.star-border-wrap {
+  position: relative;
+  display: inline-block;
+  border-radius: 16px;
+  padding: 2px;
+  overflow: hidden;
+}
+
+.star-border-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -120%;
+  background: conic-gradient(
+    from 180deg,
+    rgba(34, 211, 238, 0),
+    rgba(34, 211, 238, 1),
+    rgba(59, 130, 246, 0.95),
+    rgba(34, 211, 238, 0)
+  );
+  animation: spinBorder 2.8s linear infinite;
+  opacity: 0.9;
+}
+
+.star-border-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: radial-gradient(circle at 30% 30%, rgba(34,211,238,0.35), transparent 55%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.star-border-inner {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+@keyframes spinBorder {
+  to { transform: rotate(360deg); }
+}
+
+/* Card Swap 3D */
+.perspective {
+  perspective: 1500px;
+}
+.group:hover .perspective > div {
+  transform: rotateY(180deg);
+}
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
