@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-type Props = { className?: string }
-
 export function AuroraBackground({ className }: { className?: string }) {
   return (
     <div className={`absolute inset-0 z-0 overflow-hidden ${className ?? ""}`}>
