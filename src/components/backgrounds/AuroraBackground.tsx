@@ -1,17 +1,22 @@
-export function AuroraBackground({ className }: { className?: string }) {
+type Props = { className?: string }
+
+export function AuroraBackground({ className }: Props) {
   return (
-    <div className={`absolute inset-0 z-0 overflow-hidden ${className ?? ""}`}>
+    <div
+      className={["absolute inset-0 z-0 overflow-hidden", className ?? ""].join(" ")}
+      style={{
+        clipPath: "inset(0)",
+        WebkitMaskImage: "-webkit-radial-gradient(white, black)",
+        maskImage: "radial-gradient(white, black)",
+      }}
+    >
       <div className="absolute inset-0 bg-slate-950" />
 
-      {/* novo layer “vivo” */}
-      <div className="aurora-shift" />
-
-      {/* auroras */}
+      <div className="aurora-shift absolute inset-0 overflow-hidden" />
       <div className="aurora-blob aurora-1" />
       <div className="aurora-blob aurora-2" />
       <div className="aurora-blob aurora-3" />
 
-      {/* noise */}
       <div
         className="absolute inset-0 opacity-[0.10]"
         style={{
@@ -20,9 +25,7 @@ export function AuroraBackground({ className }: { className?: string }) {
         }}
       />
 
-      {/* overlay: deixa um pouco menos pesado */}
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950/0 via-slate-950/45 to-slate-950" />
     </div>
   )
 }
-

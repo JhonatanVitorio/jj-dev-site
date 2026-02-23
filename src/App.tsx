@@ -12,7 +12,7 @@ import { FeaturedProjects } from "./sections/FeaturedProjects"
 
 export default function App() {
   return (
-    <div className="min-h-screen relative z-10 bg-slate-950 text-white">
+    <div className="min-h-screen overflow-x-hidden relative z-10 bg-slate-950 text-white">
       <GlobalBackground />
       <Navbar />
 

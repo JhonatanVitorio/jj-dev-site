@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { Button } from "../components/ui/button"
 import crmImage from "../assets/images/crm.png"
 import hypeImage from "../assets/images/hypeShoes.png"
@@ -63,6 +63,36 @@ export function FeaturedProjects() {
   const prev = () => setActive((i) => (i - 1 + projects.length) % projects.length)
   const next = () => setActive((i) => (i + 1) % projects.length)
 
+  // === SWIPE (mobile) ===
+  const touchStartX = useRef<number | null>(null)
+  const touchStartY = useRef<number | null>(null)
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0]
+    touchStartX.current = t.clientX
+    touchStartY.current = t.clientY
+    setPaused(true)
+  }
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current == null || touchStartY.current == null) return
+
+    const t = e.changedTouches[0]
+    const dx = t.clientX - touchStartX.current
+    const dy = t.clientY - touchStartY.current
+
+    const isHorizontal = Math.abs(dx) > Math.abs(dy)
+
+    if (isHorizontal && Math.abs(dx) > 50) {
+      if (dx < 0) next()
+      else prev()
+    }
+
+    touchStartX.current = null
+    touchStartY.current = null
+    setPaused(false)
+  }
+
   useEffect(() => {
     if (paused) return
     const id = window.setInterval(() => {
@@ -109,23 +139,21 @@ export function FeaturedProjects() {
           </button>
 
           <div
-            className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] shadow-2xl"
+            className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] shadow-2xl touch-pan-y"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+            onTouchCancel={() => setPaused(false)}
           >
-            <div className="pointer-events-none absolute -inset-32 bg-cyan-500/10 blur-3xl" />
+            <div className="pointer-events-none absolute inset-0 bg-cyan-500/10 blur-3xl [clip-path:inset(0)]" />
 
             {/* MOBILE: stack com imagem aspect / DESKTOP: lg grid igual */}
             <div className="relative grid grid-cols-1 lg:min-h-[420px] lg:grid-cols-2">
               {/* Imagem */}
               <div className="relative">
                 <div className="aspect-[16/9] lg:aspect-auto lg:h-full">
-                  <img
-                    src={p.image}
-                    alt={p.title}
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
+                  <img src={p.image} alt={p.title} className="h-full w-full object-cover" loading="lazy" />
                 </div>
 
                 <div className="absolute inset-0 bg-gradient-to-r from-slate-950/35 via-slate-950/10 to-slate-950/0" />
@@ -142,15 +170,9 @@ export function FeaturedProjects() {
               <div className="relative p-5 sm:p-8 lg:p-10">
                 <div className="flex flex-col gap-5">
                   <div>
-                    <p className="text-xs font-medium tracking-wider text-cyan-300/90">
-                      {p.subtitle.toUpperCase()}
-                    </p>
-                    <h3 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-white">
-                      {p.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-white/65">
-                      {p.description}
-                    </p>
+                    <p className="text-xs font-medium tracking-wider text-cyan-300/90">{p.subtitle.toUpperCase()}</p>
+                    <h3 className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-white">{p.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-white/65">{p.description}</p>
                   </div>
 
                   <div className="space-y-3">
@@ -166,10 +188,7 @@ export function FeaturedProjects() {
 
                   {/* MOBILE: botões full width */}
                   <div className="grid grid-cols-1 gap-2 sm:flex sm:flex-row sm:gap-3">
-                    <Button
-                      asChild
-                      className="h-11 w-full rounded-2xl bg-cyan-400 text-slate-950 hover:bg-cyan-300 sm:w-auto"
-                    >
+                    <Button asChild className="h-11 w-full rounded-2xl bg-cyan-400 text-slate-950 hover:bg-cyan-300 sm:w-auto">
                       <a href={p.ctaPrimary.href}>{p.ctaPrimary.label}</a>
                     </Button>
 

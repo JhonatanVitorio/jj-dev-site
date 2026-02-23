@@ -5,19 +5,19 @@ import logo from "@/assets/logos/logotipo.png"
 
 export function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden">
+    <section id="top" className="relative isolate overflow-hidden [transform:translateZ(0)]">
       <WordmarkParallax />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 py-10 sm:py-14 md:py-16">
         <div className="grid items-center gap-8 md:grid-cols-2 md:gap-10">
           {/* MOBILE LOGO (fica acima e central) */}
-          <div className="flex justify-center md:hidden">
+          <div className="flex justify-center md:hidden mt-20">
             <div className="relative">
               <div className="absolute inset-0 rounded-full bg-cyan-500/20 blur-3xl" />
               <img
                 src={logo}
                 alt="JJ Dev Solutions"
-                className="h-28 w-auto object-contain"
+                className="h-[165px] sm:h-[150px] w-auto object-contain"
               />
             </div>
           </div>
