@@ -207,3 +207,34 @@ body {
     mix-blend-mode: normal !important;
   }
 }
+
+/* ===== Ripple ring (ondas) ===== */
+@keyframes ringRipple {
+  0%   { transform: scale(0.92); opacity: 0.00; }
+  15%  { opacity: 0.55; }
+  100% { transform: scale(1.15); opacity: 0.00; }
+}
+
+.ring-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid rgba(34, 211, 238, 0.22); /* cyan */
+  filter: drop-shadow(0 0 12px rgba(34, 211, 238, 0.12));
+  animation: ringRipple 2.8s ease-out infinite;
+  pointer-events: none;
+}
+
+.ring-ripple.delay-1 { animation-delay: 0.8s; opacity: 0; }
+.ring-ripple.delay-2 { animation-delay: 1.6s; opacity: 0; }
+
+/* Glow minimalista */
+.ring-glow {
+  position: absolute;
+  inset: -18%;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(34,211,238,0.16), transparent 60%);
+  filter: blur(18px);
+  pointer-events: none;
+}
+

@@ -12,7 +12,7 @@ const items = [
 export function Navbar() {
   return (
     <header className="fixed top-0 inset-x-0 z-[999] w-full bg-slate-950/25 backdrop-blur-2xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.2)]">
-      <div className="mx-auto flex h-[75px] md:h-16 max-w-6xl items-center justify-between px-4">
+      <div className="mx-auto flex h-[65px] md:h-16 max-w-6xl items-center justify-between px-4">
         <a href="#top" className="flex items-center gap-3">
           <img
             src={logo}

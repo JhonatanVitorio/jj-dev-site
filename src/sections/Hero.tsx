@@ -5,35 +5,49 @@ import logo from "@/assets/logos/logotipo.png"
 
 export function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden [transform:translateZ(0)]">
+    <section id="top" className="relative isolate overflow-hidden [transform:translateZ(0)] mt-0 md:mt-10">
       <WordmarkParallax />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 py-10 sm:py-14 md:py-16">
         <div className="grid items-center gap-8 md:grid-cols-2 md:gap-10">
           {/* MOBILE LOGO (fica acima e central) */}
-          <div className="flex justify-center md:hidden mt-20">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-cyan-500/20 blur-3xl" />
+          <div className="flex flex-col items-center md:hidden mt-10">
+          <div className="relative">
+            {/* Glow minimalista */}
+            <div className="ring-glow" />
+
+            {/* “Glass” base */}
+            <div className="absolute inset-0 rounded-full bg-white/6 backdrop-blur-xl border border-transparent scale-110" />
+
+            {/* Ondas (ripple rings) */}
+            <div className="ring-ripple scale-110" />
+            <div className="ring-ripple delay-1 scale-110" />
+            <div className="ring-ripple delay-2 scale-110" />
+
+            <div className="relative p-6">
               <img
                 src={logo}
                 alt="JJ Dev Solutions"
-                className="h-[165px] sm:h-[150px] w-auto object-contain"
+                className="h-44 w-auto object-contain"
               />
             </div>
           </div>
 
+          <div className="mt-4 h-px w-24 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-70" />
+          <p className="mt-3 text-xs tracking-widest text-cyan-300/70 uppercase">
+            Digital Product Studio
+          </p>
+        </div>
+
           {/* TEXTO */}
           <div className="max-w-xl md:max-w-none text-center md:text-left mx-auto md:mx-0">
-            <p className="text-[12px] sm:text-sm font-medium text-white/60">
-              Soluções digitais sob medida, com padrão de produto.
-            </p>
 
-            <h1 className="mt-2 text-[28px] leading-tight font-bold tracking-tight sm:text-5xl md:text-4xl lg:text-5xl">
+            <h1 className="text-[28px] leading-tight font-bold tracking-tight sm:text-5xl md:text-4xl lg:text-5xl">
               Sites modernos, automações e sistemas{" "}
               <span className="text-cyan-300">profissionais</span>
             </h1>
 
-            <p className="mt-3 text-[13px] leading-relaxed sm:text-base text-white/70">
+            <p className="mt-3 text-[11px] leading-relaxed sm:text-base text-white/70">
               Desenvolvemos soluções digitais sob medida para empresas que querem crescer com tecnologia.
               Criamos sites, sistemas e automações com foco em performance, escalabilidade e resultado real.
             </p>
@@ -80,7 +94,7 @@ export function Hero() {
           {/* DESKTOP LOGO (mantém do jeito que já estava) */}
           <div className="hidden md:flex justify-center md:justify-end">
             <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-cyan-500/20 blur-3xl" />
+              <div className="absolute inset-0 rounded-full bg-cyan-500/20 blur-3xl"/>
               <img
                 src={logo}
                 alt="JJ Dev Solutions"
