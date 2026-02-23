@@ -12,7 +12,7 @@ export function ProductsSection() {
       href: "#",
     },
     {
-      title: "Web Sites e Sistemas Completos",
+      title: "Web Sites e Sistemas",
       description: "Sistemas web sob medida, desde a ideia até o deploy.",
       image:
         "https://sitebemfeito.com.br/blog/wp-content/uploads/2023/02/Imagem-tipos-de-sites-4-min-1024x683.png",
