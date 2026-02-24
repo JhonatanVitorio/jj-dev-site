@@ -3,7 +3,6 @@ import { Footer } from "./components/layout/Footer"
 import { Hero } from "./sections/Hero"
 import { Process } from "./sections/Process"
 import { WhatsAppFloat } from "./components/WhatsAppFloat"
-import { TechStack } from "./sections/TechStack"
 import { Contact } from "./sections/Contact"
 import { Faq } from "./sections/Faq"
 import { GlobalBackground } from "./components/backgrounds/GlobalBackground"
@@ -18,7 +17,6 @@ export default function App() {
 
       <main>
         <Hero />
-        <TechStack />
         <ProductsSection />
         <Process />
         <FeaturedProjects />
