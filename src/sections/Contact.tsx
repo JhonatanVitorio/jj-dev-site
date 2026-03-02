@@ -148,7 +148,7 @@ export function Contact() {
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="text-sm">
               {status === "success" && (
-                <span className="text-emerald-300">Mensagem enviada! ✅</span>
+                <span className="text-sky-950-300">Mensagem enviada com sucesso!</span>
               )}
               {status === "error" && (
                 <span className="text-red-300">
