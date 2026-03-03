@@ -41,8 +41,8 @@ body {
   height: 700px;
   border-radius: 9999px;
   filter: blur(65px);
-  opacity: 0.35;              /* mais forte */
-  mix-blend-mode: screen;     /* deixa “brilho” mais vivo */
+  opacity: 0.35;           
+  mix-blend-mode: screen;    
   will-change: transform;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
@@ -74,7 +74,6 @@ body {
   animation: auroraMove3 12s infinite;
 }
 
-/* movimento MUITO mais perceptível */
 @keyframes auroraMove1 {
   0%   { transform: translate3d(0, 0, 0) scale(1); }
   50%  { transform: translate3d(120px, 40px, 0) scale(1.12); }
@@ -93,7 +92,6 @@ body {
   100% { transform: translate3d(0, 0, 0) scale(1); }
 }
 
-/* “respiração” do fundo (bem pro) */
 .aurora-shift {
   position: absolute;
   inset: 0;
@@ -172,7 +170,6 @@ body {
   transform: rotateY(180deg);
 }
 
-/* ===== Fix iOS/mobile: evita faixa/recorte com blur + animação ===== */
 @media (max-width: 639px) {
   /* desliga animações no mobile */
   .aurora-blob,
@@ -181,7 +178,6 @@ body {
     transform: none !important;
   }
 
-  /* reduz o tamanho e “puxa” pro centro (para não vazar lateral) */
   .aurora-blob {
     width: 520px !important;
     height: 520px !important;
@@ -235,7 +231,6 @@ body {
 .ring-ripple.delay-1 { animation-delay: 0.8s; opacity: 0; }
 .ring-ripple.delay-2 { animation-delay: 1.6s; opacity: 0; }
 
-/* Glow minimalista */
 .ring-glow {
   position: absolute;
   inset: -18%;

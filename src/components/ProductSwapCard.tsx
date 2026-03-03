@@ -125,7 +125,6 @@ export function ProductSwapCard({
                   </a>
                 </div>
 
-                {/* ✅ MOBILE: rodapé bem compacto */}
                 <div className="mt-1.5 sm:mt-6 text-[9px] sm:text-xs text-white/50">
                   JJ Dev. Todos os direitos reservados.
                 </div>

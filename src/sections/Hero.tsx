@@ -72,7 +72,6 @@ export function Hero() {
               </Button>
             </div>
 
-            {/* BLOQUINHOS: mais compactos e alinhados no mobile */}
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:mt-10">
               {[
                 { k: "Sistemas", v: "Alta conversão" },
@@ -91,7 +90,6 @@ export function Hero() {
             </div>
           </div>
 
-          {/* DESKTOP LOGO (mantém do jeito que já estava) */}
           <div className="hidden md:flex justify-center md:justify-end">
             <div className="relative">
               <div className="absolute inset-0 rounded-full bg-cyan-500/20 blur-3xl"/>

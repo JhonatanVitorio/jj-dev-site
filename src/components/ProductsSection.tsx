@@ -62,26 +62,20 @@ export function ProductsSection() {
           const total = products.length
           const remainder = total % 3
 
-          // Desktop: mantém EXATAMENTE sua lógica original
           const isLastRowTwo = remainder === 2 && index >= total - 2
 
-          // Mobile: último card maior (ocupa a linha toda)
           const isLastMobile = index === total - 1
 
           return (
             <div
               key={index}
               className={[
-                // base igual ao seu (desktop preservado)
                 "w-full max-w-sm",
 
-                // ✅ SOMENTE MOBILE: último item vira “grande”
                 isLastMobile ? "col-span-2" : "",
 
-                // ✅ NO DESKTOP volta ao normal (não ocupa 2 colunas e não estica)
                 isLastMobile ? "md:col-span-1 md:max-w-sm" : "",
 
-                // Desktop: seu translate original
                 isLastRowTwo ? "md:translate-x-1/2" : "",
               ].join(" ")}
             >
